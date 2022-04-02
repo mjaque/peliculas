@@ -1,0 +1,23 @@
+.vistamensaje{
+  width: 60%;
+  margin: 1em auto;
+  background-color: red;
+  color: white;
+  padding: 1em;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 0.3em;
+  display: none;
+}
+/* Botón de cierre del div */
+.vistamensaje > span:first-child{
+  margin-right: 1rem;
+  float: right;
+  font-size: 1rem;
+  color: grey;
+  cursor: pointer;
+}
+/* Texto del mensaje */
+.vistamensaje > span:nth-child(2){
+  text-decoration: underline;
+}

@@ -9,6 +9,7 @@ export class Rest {
   static #URL = 'php/api/index.php'
 
   get(recurso, objeto) {}
+
   static post(recurso, objeto) {
     const opciones = {
 			method : 'POST',

@@ -5,6 +5,10 @@
 import {Vista} from '../vista.js'
 
 export class VistaMensaje extends Vista{
+  static INFO = 'info'
+  static OK = 'ok'
+  static AVISO = 'aviso'
+  static ERROR = 'error'
   /**
     Constructor de la clase.
     @param {Object} controlador Controlador de la vista principal.
@@ -29,7 +33,8 @@ export class VistaMensaje extends Vista{
   cerrar(){
     this.base.style.display = 'none'
   }
-  mostrar(mensaje){
+  mostrar(mensaje, nivel = VistaMensaje.ERROR){
+    this.base.className = `vistamensaje ${nivel}`
     this.spanMensaje.textContent = mensaje
     this.base.style.display = 'block'
   }

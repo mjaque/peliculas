@@ -7,8 +7,6 @@ import {Vista} from '../vista.js'
 import {VistaMensaje} from '../vistamensaje/vistamensaje.js'
 import {VistaMenu} from '../vistamenu/vistamenu.js'
 import {VistaAltaPelicula} from '../vistaaltapelicula/vistaaltapelicula.js'
-//Controladores
-import {Pelicula as ControladorPelicula} from '../../controladores/pelicula.js'
 
 export class VistaPrincipal extends Vista {
   /**
@@ -36,7 +34,7 @@ export class VistaPrincipal extends Vista {
     //Subvistas
     this.vistaMenu = new VistaMenu(this.controlador, this.nav)
     this.vistaMensaje = new VistaMensaje(this.controlador, this.divError)
-    this.vistaAltaPelicula = new VistaAltaPelicula(new ControladorPelicula(this.controlador), this.divAlta)
+    this.vistaAltaPelicula = new VistaAltaPelicula(this.controlador, this.divAlta)
 
     //Mostramos el div inicial
 
@@ -47,14 +45,18 @@ export class VistaPrincipal extends Vista {
     //Cargamos la hoja de estilo
     super.cargarCSS(`${this.getNombreClase()}.css`)
   }
-  verAlta(){
+  verAltaPelicula(){
     this.ocultarPaneles()
     this.vistaAltaPelicula.mostrar()
+  }
+  altaPeliculaCorrecta(){
+    this.vistaMensaje.mostrar('La película se ha registrado correctamente.', VistaMensaje.OK)
+    this.vistaAltaPelicula.limpiar()
   }
   ocultarPaneles(){
     this.vistaAltaPelicula.ocultar()
   }
   mostrarError(error){
-    this.vistaMensaje.mostrar(error)  //TODO: añadir nivel de error.
+    this.vistaMensaje.mostrar(error, VistaMensaje.ERROR)
   }
 }

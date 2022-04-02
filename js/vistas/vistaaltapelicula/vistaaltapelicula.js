@@ -29,6 +29,11 @@ export class VistaAltaPelicula extends Vista{
     //Cargamos la hoja de estilo
     super.cargarCSS(`${this.getNombreClase()}.css`)
   }
+  limpiar(){
+    this.iTitulo.value = ""
+    this.taDescripcion.value = ""
+    this.btnAlta.value = ""
+  }
   mostrar(){
     this.base.style.display = 'block'
     this.iTitulo.focus()
@@ -37,6 +42,12 @@ export class VistaAltaPelicula extends Vista{
     this.base.style.display = 'none'
   }
   alta(){
+    //Validación de Datos de Entrada
+    if (this.iTitulo.value.length < 3){
+      this.controlador.gestionarError('El campo título debe tener al menos tres caracteres.')
+      this.iTitulo.focus()
+      return
+    }
     const titulo = this.iTitulo.value
     const descripcion = this.taDescripcion.value
     const pelicula = new Pelicula(titulo, descripcion)

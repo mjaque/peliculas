@@ -13,5 +13,8 @@ export class Pelicula{
   }
   crear(){
     return Rest.post('pelicula', this)
+      .then( localizacion => {
+        this.id = localizacion.substring(localizacion.indexOf('/', 1))
+      })
   }
 }

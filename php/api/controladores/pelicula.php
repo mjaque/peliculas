@@ -6,7 +6,7 @@ require_once('./servicios/bd.php');
 
 class Pelicula{
   function get($id){
-    $resultado = BD::seleccionarPelicula(2);
+    $resultado = BD::seleccionarPelicula($id);
     //Respuesta a un GET
     header('HTTP/1.1 200 OK');
     echo json_encode($resultado);

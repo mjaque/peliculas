@@ -19,7 +19,8 @@ export class VistaMenu extends Vista{
     //Cogemos referencias a los elementos del interfaz
 
     //Asociamos eventos
-    this.doc.getElementsByTagName('li')[0].onclick = this.controlador.verAltaPelicula.bind(this.controlador)
+    this.doc.getElementsByTagName('li')[0].onclick = this.controlador.listarPeliculas.bind(this.controlador)
+    this.doc.getElementsByTagName('li')[1].onclick = this.controlador.verAltaPelicula.bind(this.controlador)
 
     super.transferir(this.base, this.doc)
     //Cargamos la hoja de estilo

@@ -59,4 +59,7 @@ export class VistaPrincipal extends Vista {
   mostrarError(error){
     this.vistaMensaje.mostrar(error, VistaMensaje.ERROR)
   }
+  listarPeliculas(peliculas){
+    console.log(peliculas)
+  }
 }

@@ -2,16 +2,22 @@
   Controlador principal de la aplicación.
 **/
 import {VistaPrincipal} from './vistas/vistaprincipal/vistaprincipal.js'
+import {Pelicula} from './modelos/pelicula.js'
 
 class App{
   constructor(){
     window.onload = this.iniciar.bind(this)
   }
   iniciar(){
+    this.modelo = new Pelicula()
     this.vistaPrincipal = new VistaPrincipal(this, document.body)
   }
   gestionarError(error){
     this.vistaPrincipal.mostrarError(error)
+  }
+  listarPeliculas(){
+    let peliculas = this.modelo.listar()
+      .then( peliculas => this.vistaPrincipal.listarPeliculas(peliculas))
   }
   verAltaPelicula(){
     this.vistaPrincipal.verAltaPelicula()

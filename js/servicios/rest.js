@@ -8,7 +8,25 @@
 export class Rest {
   static #URL = 'php/api/index.php'
 
-  get(recurso, objeto) {}
+  static get(recurso, objeto) {
+    let opciones = {
+			method : 'GET',
+			headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+		}
+    if (objeto)
+      opciones.body = JSON.stringify(objeto)
+    //Construimos la petición
+    return fetch(`${Rest.#URL}/${recurso}`, opciones) //Hacemos la petición
+      .then(respuesta => {
+        //Control de Errores
+        if (!respuesta.ok) throw Error(`${respuesta.status} - ${respuesta.statusText}`)
+
+        return respuesta.json()
+      })
+  }
 
   static post(recurso, objeto) {
     const opciones = {

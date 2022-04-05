@@ -17,4 +17,7 @@ export class Pelicula{
         this.id = localizacion.substring(localizacion.indexOf('/', 1))
       })
   }
+  listar(){
+    return Rest.get('pelicula')
+  }
 }

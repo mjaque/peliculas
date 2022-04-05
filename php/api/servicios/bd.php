@@ -14,7 +14,9 @@ class BD{
 
   public static function seleccionarPelicula($id){
     $conexion = BD::conectar();
-    $sql = 'SELECT titulo, descripcion FROM Pelicula WHERE id = :id';
+    $sql = 'SELECT titulo, descripcion FROM Pelicula ';
+    if ($id)
+      $sql .= 'WHERE id = :id';
     $sentencia = $conexion->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $sentencia->execute(array('id' => $id));
 
